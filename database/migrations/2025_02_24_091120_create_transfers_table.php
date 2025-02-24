@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('idJoueur');
+            $table->unsignedBigInteger('idEquipeDepart');
+            $table->unsignedBigInteger('idEquipeArrivee');
+            $table->decimal('montant', 10, 2);
+            $table->date('dateTransfer');
             $table->timestamps();
+
+            $table->foreign('idJoueur')->references('id')->on('joueurs')->onDelete('cascade');
+            $table->foreign('idEquipeDepart')->references('id')->on('equipes')->onDelete('cascade');
+            $table->foreign('idEquipeArrivee')->references('id')->on('equipes')->onDelete('cascade');
+
         });
     }
 
