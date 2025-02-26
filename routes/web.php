@@ -9,7 +9,7 @@ use App\Http\Controllers\ControllerTransfers;
 use Illuminate\Support\Facades\Route;
 
 // 🏠 Home Page
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('home');
 })->name('home');
 
