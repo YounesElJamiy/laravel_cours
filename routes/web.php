@@ -6,7 +6,6 @@ use App\Http\Controllers\ControllerJoueurs;
 use App\Http\Controllers\ControllerCompetitions;
 use App\Http\Controllers\ControllerMatchs;
 use App\Http\Controllers\ControllerTransfers;
-use App\Http\Controllers\ControllerTransferts;
 use Illuminate\Support\Facades\Route;
 
 // 🏠 Home Page
