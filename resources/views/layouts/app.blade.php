@@ -16,7 +16,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('joueurs.index') }}">Joueurs</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('competitions.index') }}">Compétitions</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('matchs.index') }}">Matchs</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('transferts.index') }}">Transferts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('transfers.index') }}">Transferts</a></li>
                 </ul>
             </div>
         </div>

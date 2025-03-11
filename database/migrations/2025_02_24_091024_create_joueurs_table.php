@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('prenom');
             $table->string('poste');
             $table->string('nationalité');
-            $table->unsignedBigInteger('idEquipe');
+            $table->foreignId('idEquipe');
             $table->timestamps();
 
 

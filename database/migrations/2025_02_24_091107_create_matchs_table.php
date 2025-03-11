@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('scoreExterieur')->nullable();
             $table->timestamps();
 
-            $table->foreign('idCompetion')->references('id')->on('competitons')->onDelete('cascade');
+            $table->foreign('idCompetition')->references('id')->on('competitions')->onDelete('cascade');
             $table->foreign('idEquipeDomicile')->references('id')->on('equipes')->onDelete('cascade');
             $table->foreign('idEquipeExterieur')->references('id')->on('equipes')->onDelete('cascade');
         });

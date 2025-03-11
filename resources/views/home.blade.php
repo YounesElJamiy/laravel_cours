@@ -13,7 +13,7 @@
 @section('content')
     <div class="text-center">
         <h1>Bienvenue sur Football Manager</h1>
-        <p>Gérez vos équipes, joueurs, matchs et transferts.</p>
+        <p>Gérez vos équipes, joueurs, matchs et transfers.</p>
     </div>
 @endsection
 

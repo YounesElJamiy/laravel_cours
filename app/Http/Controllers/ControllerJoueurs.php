@@ -10,7 +10,7 @@ class ControllerJoueurs extends Controller
 {
     public function index()
     {
-        $joueurs = Joueurs::with('equipe')->get();
+        $joueurs = Joueurs::with('equipes')->get();
         return view('joueurs.index', compact('joueurs'));
     }
 
@@ -36,7 +36,7 @@ class ControllerJoueurs extends Controller
 
     public function show(Joueurs $joueurs)
     {
-        return view('joueurs.show', compact('joueur'));
+        return view('joueurs.show', compact('joueurs'));
     }
 
     public function edit(Joueurs $joueurs)

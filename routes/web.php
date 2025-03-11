@@ -18,11 +18,11 @@ Route::resource('equipes', ControllerEquipes::class);
 Route::resource('joueurs', ControllerJoueurs::class);
 Route::resource('competitions', ControllerCompetitions::class);
 Route::resource('matchs', ControllerMatchs::class);
-Route::resource('transferts', ControllerTransfers::class);
+Route::resource('transfers', ControllerTransfers::class);
 
 // 📌 Filtering Routes
-Route::get('/joueurs/equipe/{idEquipe}', [ControllerJoueurs::class, 'filterByTeam'])->name('joueurs.byTeam');
-Route::get('/matchs/competition/{idCompetition}', [ControllerMatchs::class, 'filterByCompetition'])->name('matchs.byCompetition');
+Route::get('/joueurs/equipes/{idEquipe}', [ControllerJoueurs::class, 'filterByTeam'])->name('joueurs.byTeam');
+Route::get('/matchs/competitions/{idCompetition}', [ControllerMatchs::class, 'filterByCompetition'])->name('matchs.byCompetition');
 Route::get('/matchs/date/{date}', [ControllerMatchs::class, 'filterByDate'])->name('matchs.byDate');
-Route::get('/transferts/periode', [ControllerTransfers::class, 'filterByPeriod'])->name('transferts.byPeriod');
+Route::get('/transfers/periode', [ControllerTransfers::class, 'filterByPeriod'])->name('transferts.byPeriod');
 

@@ -23,13 +23,13 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($transferts as $transfert)
+            @foreach ($transfers as $transfer)
                 <tr>
-                    <td>{{ $transfert->joueur->nom }} {{ $transfert->joueur->prenom }}</td>
-                    <td>{{ $transfert->equipeDepart->nom }}</td>
-                    <td>{{ $transfert->equipeArrivee->nom }}</td>
-                    <td>{{ $transfert->montant }} €</td>
-                    <td>{{ $transfert->dateTransfert }}</td>
+                    <td>{{ $transfer->joueur->nom }} {{ $transfer->joueur->prenom }}</td>
+                    <td>{{ $transfer->equipeDepart->nom }}</td>
+                    <td>{{ $transfer->equipeArrivee->nom }}</td>
+                    <td>{{ $transfer->montant }} €</td>
+                    <td>{{ $transfer->dateTransfert }}</td>
                 </tr>
             @endforeach
         </tbody>

@@ -32,12 +32,12 @@ class ControllerEquipes extends Controller
 
     public function show(Equipes $equipes)
     {
-        return view('equipes.show', compact('equipe'));
+        return view('equipes.show', compact('equipes'));
     }
 
     public function edit(Equipes $equipes)
     {
-        return view('equipes.edit', compact('equipe'));
+        return view('equipes.edit', compact('equipes'));
     }
 
     public function update(Request $request, Equipes $equipes)
