@@ -24,15 +24,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($equipes as $equipe)
+            @foreach ($equipe as $eq)
                 <tr>
-                    <td>{{ $equipe->nom }}</td>
-                    <td>{{ $equipe->pays }}</td>
-                    <td>{{ $equipe->entraineur }}</td>
+                    <td>{{ $eq->nom }}</td>
+                    <td>{{ $eq->pays }}</td>
+                    <td>{{ $eq->entraineur }}</td>
                     <td>
-                        <a href="{{ route('equipes.show', $equipe->id) }}" class="btn btn-info">Voir</a>
-                        <a href="{{ route('equipes.edit', $equipe->id) }}" class="btn btn-warning">Modifier</a>
-                        <form action="{{ route('equipes.destroy', $equipe->id) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('equipes.show', $eq->id) }}" class="btn btn-info">Voir</a>
+                        <a href="{{ route('equipes.edit', $eq->id) }}" class="btn btn-warning">Modifier</a>
+                        <form action="{{ route('equipes.destroy', $eq->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Supprimer</button>

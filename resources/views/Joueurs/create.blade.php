@@ -31,10 +31,14 @@
             <input type="text" class="form-control" id="nationalite" name="nationalite" required>
         </div>
         <div class="mb-3">
-            <label for="poste" class="form-label">Poste</label>
-            <input type="text" class="form-control" id="poste" name="poste" required>
+            <select class="form-select" name="equipe" id="equipe">
+                <option disabled>Liste des equipes</option>
+                @foreach($equipe as $eq)
+                    <option value="{{ $eq->idEquipe }}" {{ $eq->idEquipe == $eq->idEquipe ? 'selected' : '' }}>{{ $eq->nom }}</option>
+                @endforeach
+            </select>
         </div>
-        <button type="submit" class="btn btn-success">Ajouter</button>
+        <a href="{{ route('joueurs.index') }}" class="btn btn-success">Ajouter</a>
     </form>
 @endsection
 

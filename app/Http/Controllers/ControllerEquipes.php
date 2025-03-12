@@ -10,7 +10,7 @@ class ControllerEquipes extends Controller
     public function index()
     {
         $equipe = Equipes::all();
-        return view('equipes.index', compact('equipes'));
+        return view('equipes.index', compact('equipe'));
     }
 
     public function create()

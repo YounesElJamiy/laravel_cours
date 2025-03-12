@@ -26,17 +26,17 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($joueurs as $joueur)
+            @foreach ($joueur as $jr)
                 <tr>
-                    <td>{{ $joueur->nom }}</td>
-                    <td>{{ $joueur->prenom }}</td>
-                    <td>{{ $joueur->poste }}</td>
-                    <td>{{ $joueur->nationalite }}</td>
-                    <td>{{ $joueur->equipe->nom }}</td>
+                    <td>{{ $jr->nom }}</td>
+                    <td>{{ $jr->prenom }}</td>
+                    <td>{{ $jr->poste }}</td>
+                    <td>{{ $jr->nationalite }}</td>
+                    <td>{{ $jr->equipe->nom }}</td>
                     <td>
-                        <a href="{{ route('joueurs.show', $joueur->id) }}" class="btn btn-info">Voir</a>
-                        <a href="{{ route('joueurs.edit', $joueur->id) }}" class="btn btn-warning">Modifier</a>
-                        <form action="{{ route('joueurs.destroy', $joueur->id) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('joueurs.show', $jr->id) }}" class="btn btn-info">Voir</a>
+                        <a href="{{ route('joueurs.edit', $jr->id) }}" class="btn btn-warning">Modifier</a>
+                        <form action="{{ route('joueurs.destroy', $jr->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Supprimer</button>

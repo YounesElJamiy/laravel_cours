@@ -41,8 +41,8 @@ class ControllerJoueurs extends Controller
 
     public function edit(Joueurs $joueur)
     {
-        $equipes = Equipes::all();
-        return view('joueurs.edit', compact('joueur', 'equipes'));
+        $equipe = Equipes::all();
+        return view('joueurs.edit', compact('joueur', 'equipe'));
     }
 
     public function update(Request $request, Joueurs $joueur)
