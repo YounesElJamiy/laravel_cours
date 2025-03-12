@@ -7,22 +7,15 @@
 </head>
 <body>
     @extends('layouts.app')
-        <button type="submit" class="btn btn-success">Modifier</button>
-    </form>
-@endforeach
-@endsection
-</body>
-</html>
-
 
 @section('title', 'Modifier Équipe')
 
 @section('content')
-@foreach ($equipes as $equipe)
+@if ($equipe)
 
 
     <h2>Modifier Équipe </h2>
-    <form action="{{ route('equipes.update' , [$equipe->id]) }}" method="POST">
+    <form action="{{ route('equipes.update' , $equipe->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="mb-3">
@@ -37,3 +30,11 @@
             <label for="entraineur" class="form-label">Entraîneur</label>
             <input type="text" class="form-control" id="entraineur" value="{{ $equipe->entraineur }}" name="entraineur" >
         </div>
+        <button type="submit" class="btn btn-success">Modifier</button>
+    </form>
+@else
+    <p>Aucun equipe trouvée</p>
+@endif
+@endsection
+</body>
+</html>

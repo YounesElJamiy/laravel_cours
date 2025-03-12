@@ -10,14 +10,14 @@ class ControllerJoueurs extends Controller
 {
     public function index()
     {
-        $joueurs = Joueurs::with('equipes')->get();
-        return view('joueurs.index', compact('joueurs'));
+        $joueur = Joueurs::with('equipes')->get();
+        return view('joueurs.index', compact('joueur'));
     }
 
     public function create()
     {
-        $equipes = Equipes::all();
-        return view('joueurs.create', compact('equipes'));
+        $equipe = Equipes::all();
+        return view('joueurs.create', compact('equipe'));
     }
 
     public function store(Request $request)
@@ -34,18 +34,18 @@ class ControllerJoueurs extends Controller
         return redirect()->route('joueurs.index')->with('success', 'Joueur ajouté!');
     }
 
-    public function show(Joueurs $joueurs)
+    public function show(Joueurs $joueur)
     {
-        return view('joueurs.show', compact('joueurs'));
+        return view('joueurs.show', compact('joueur'));
     }
 
-    public function edit(Joueurs $joueurs)
+    public function edit(Joueurs $joueur)
     {
         $equipes = Equipes::all();
-        return view('joueurs.edit', compact('joueurs', 'equipes'));
+        return view('joueurs.edit', compact('joueur', 'equipes'));
     }
 
-    public function update(Request $request, Joueurs $joueurs)
+    public function update(Request $request, Joueurs $joueur)
     {
         $request->validate([
             'nom' => 'required',
@@ -55,13 +55,13 @@ class ControllerJoueurs extends Controller
             'idEquipe' => 'required|exists:equipes,id',
         ]);
 
-        $joueurs->update($request->all());
+        $joueur->update($request->all());
         return redirect()->route('joueurs.index')->with('success', 'Joueur mis à jour!');
     }
 
-    public function destroy(Joueurs $joueurs)
+    public function destroy(Joueurs $joueur)
     {
-        $joueurs->delete();
+        $joueur->delete();
         return redirect()->route('joueurs.index')->with('success', 'Joueur supprimé!');
     }
 }

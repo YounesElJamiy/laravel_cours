@@ -11,9 +11,9 @@
 @section('title', 'Détails de l\'Équipe')
 
 @section('content')
-    <h2>{{ $equipes->nom }}</h2>
-    <p><strong>Pays :</strong> {{ $equipes->pays }}</p>
-    <p><strong>Entraîneur :</strong> {{ $equipes->entraineur }}</p>
+    <h2>{{ $equipe->nom }}</h2>
+    <p><strong>Pays :</strong> {{ $equipe->pays }}</p>
+    <p><strong>Entraîneur :</strong> {{ $equipe->entraineur }}</p>
     <a href="{{ route('equipes.index') }}" class="btn btn-secondary">Retour</a>
 @endsection
 

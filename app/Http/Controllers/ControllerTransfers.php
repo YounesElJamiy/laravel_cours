@@ -11,15 +11,15 @@ class ControllerTransfers extends Controller
 {
     public function index()
     {
-        $transfers = Transfers::with(['joueur', 'equipeDepart', 'equipeArrivee'])->get();
-        return view('transfers.index', compact('transfers'));
+        $transfer = Transfers::with(['joueur', 'equipeDepart', 'equipeArrivee'])->get();
+        return view('transfers.index', compact('transfer'));
     }
 
     public function create()
     {
-        $joueurs = Joueurs::all();
-        $equipes = Equipes::all();
-        return view('transfers.create', compact('joueurs', 'equipes'));
+        $joueur = Joueurs::all();
+        $equipe = Equipes::all();
+        return view('transfers.create', compact('joueur', 'equipe'));
     }
 
     public function store(Request $request)
@@ -36,19 +36,19 @@ class ControllerTransfers extends Controller
         return redirect()->route('transfers.index')->with('success', 'Transfer ajouté!');
     }
 
-    public function show(Transfers $transfers)
+    public function show(Transfers $transfer)
     {
         return view('transfers.show', compact('transfer'));
     }
 
-    public function edit(Transfers $transfers)
+    public function edit(Transfers $transfer)
     {
-        $joueurs = Joueurs::all();
-        $equipes = Equipes::all();
-        return view('transfers.edit', compact('transfer', 'joueurs', 'equipes'));
+        $joueur = Joueurs::all();
+        $equipe = Equipes::all();
+        return view('transfers.edit', compact('transfer', 'joueur', 'equipe'));
     }
 
-    public function update(Request $request, Transfers $transfers)
+    public function update(Request $request, Transfers $transfer)
     {
         $request->validate([
             'idJoueur' => 'required|exists:joueurs,id',
@@ -58,13 +58,13 @@ class ControllerTransfers extends Controller
             'dateTransfer' => 'required|date',
         ]);
 
-        $transfers->update($request->all());
+        $transfer->update($request->all());
         return redirect()->route('transfers.index')->with('success', 'Transfer mis à jour!');
     }
 
-    public function destroy(Transfers $transfers)
+    public function destroy(Transfers $transfer)
     {
-        $transfers->delete();
+        $transfer->delete();
         return redirect()->route('transfers.index')->with('success', 'Transfer supprimé!');
     }
 
@@ -74,7 +74,7 @@ class ControllerTransfers extends Controller
         $start_date = $request->query('start');
         $end_date = $request->query('end');
 
-        $transfers = Transfers::whereBetween('dateTransfer', [$start_date, $end_date])->get();
-        return view('transfers.index', compact('transfers'));
+        $transfer = Transfers::whereBetween('dateTransfer', [$start_date, $end_date])->get();
+        return view('transfers.index', compact('transfer'));
     }
 }

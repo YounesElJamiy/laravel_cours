@@ -11,15 +11,15 @@ class ControllerMatchs extends Controller
 {
     public function index()
     {
-        $matchs = Matchs::with(['competition', 'equipeDomicile', 'equipeExterieur'])->get();
-        return view('matchs.index', compact('matchs'));
+        $match = Matchs::with(['competition', 'equipeDomicile', 'equipeExterieur'])->get();
+        return view('matchs.index', compact('match'));
     }
 
     public function create()
     {
-        $competitions = Competitions::all();
-        $equipes = Equipes::all();
-        return view('matchs.create', compact('competitions', 'equipes'));
+        $competition = Competitions::all();
+        $equipe = Equipes::all();
+        return view('matchs.create', compact('competition', 'equipes'));
     }
 
     public function store(Request $request)
@@ -37,19 +37,19 @@ class ControllerMatchs extends Controller
         return redirect()->route('matchs.index')->with('success', 'Match ajouté avec succès!');
     }
 
-    public function show(Matchs $matchs)
+    public function show(Matchs $match)
     {
-        return view('matchs.show', compact('matchs'));
+        return view('matchs.show', compact('match'));
     }
 
-    public function edit(Matchs $matchs)
+    public function edit(Matchs $match)
     {
-        $competitions = Competitions::all();
-        $equipes = Equipes::all();
-        return view('matchs.edit', compact('matchs', 'competitions', 'equipes'));
+        $competition = Competitions::all();
+        $equipe = Equipes::all();
+        return view('matchs.edit', compact('match', 'competition', 'equipe'));
     }
 
-    public function update(Request $request, Matchs $matchs)
+    public function update(Request $request, Matchs $match)
     {
         $request->validate([
             'idCompetition' => 'required|exists:competitions,id',
@@ -60,27 +60,27 @@ class ControllerMatchs extends Controller
             'scoreExterieur' => 'nullable|integer',
         ]);
 
-        $matchs->update($request->all());
+        $match->update($request->all());
         return redirect()->route('matchs.index')->with('success', 'Match mis à jour!');
     }
 
-    public function destroy(Matchs $matchs)
+    public function destroy(Matchs $match)
     {
-        $matchs->delete();
+        $match->delete();
         return redirect()->route('matchs.index')->with('success', 'Match supprimé!');
     }
 
     // 🔍 Filtrer les matchs par compétition
     public function filterByCompetition($idCompetition)
     {
-        $matchs = Matchs::where('idCompetition', $idCompetition)->get();
-        return view('matchs.index', compact('matchs'));
+        $match = Matchs::where('idCompetition', $idCompetition)->get();
+        return view('matchs.index', compact('match'));
     }
 
     // 🔍 Filtrer les matchs après une certaine date
     public function filterByDate($date)
     {
-        $matchs = Matchs::where('dateMatch', '>', $date)->get();
-        return view('matchs.index', compact('matchs'));
+        $match = Matchs::where('dateMatch', '>', $date)->get();
+        return view('matchs.index', compact('match'));
     }
 }

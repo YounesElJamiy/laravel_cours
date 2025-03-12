@@ -9,7 +9,7 @@ class ControllerEquipes extends Controller
 {
     public function index()
     {
-        $equipes = Equipes::all();
+        $equipe = Equipes::all();
         return view('equipes.index', compact('equipes'));
     }
 
@@ -30,17 +30,21 @@ class ControllerEquipes extends Controller
         return redirect()->route('equipes.index')->with('success', 'Équipe ajoutée avec succès!');
     }
 
-    public function show(Equipes $equipes)
+    public function show(Equipes $equipe)
     {
-        return view('equipes.show', compact('equipes'));
+        return view('equipes.show', compact('equipe'));
     }
 
-    public function edit(Equipes $equipes)
+    public function edit($id)
     {
-        return view('equipes.edit', compact('equipes'));
+        $equipe = Equipes::find($id);
+        if(!$equipe) {
+            return redirect()->route('equipes.index')->with('error', 'Équipe non trouvée');
+        }
+        return view('equipes.edit', compact('equipe'));
     }
 
-    public function update(Request $request, Equipes $equipes)
+    public function update(Request $request, Equipes $equipe)
     {
         $request->validate([
             'nom' => 'required',
@@ -48,13 +52,13 @@ class ControllerEquipes extends Controller
             'entraineur' => 'required',
         ]);
 
-        $equipes->update($request->all());
+        $equipe->update($request->all());
         return redirect()->route('equipes.index')->with('success', 'Équipe mise à jour!');
     }
 
-    public function destroy(Equipes $equipes)
+    public function destroy(Equipes $equipe)
     {
-        $equipes->delete();
+        $equipe->delete();
         return redirect()->route('equipes.index')->with('success', 'Équipe supprimée!');
     }
 }
